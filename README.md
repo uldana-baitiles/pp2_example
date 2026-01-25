@@ -14,7 +14,7 @@
 
 | Status | Name | Description |
 |--------|------|-------------|
-| Completed | Practice 1 | [README.md](Practice1/README.md) |
+| Completed | Practice 1 | [Open](Practice1/python-basics/) |
 | In Progress | Practice 2 | - |
 | Not Started | Practice 3 | - |
 | Not Started | Practice 4 | - |
