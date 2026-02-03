@@ -1,25 +1,31 @@
-# Example 1: Boolean result from comparison
-print(10 > 5)   # True
+# Example 1
+a = True
+b = False
+# Example 2
+n = 2
+m = 0
 
+print(bool(n)) # True
+print(bool(m)) # False
 
-# Example 2: Boolean result from comparison
-print(3 > 10)   # False
+# Example 3
+s = "apple"
+e = ""
 
+print(bool(s)) # True
+print(bool(e)) # False
 
-# Example 3: Boolean values True and False
-x = True
-y = False
-print(x)
-print(y)
+# Example 4
+l = ["apple", "orange", 3 ]
+t = []
 
+print(bool(l)) # True
+print(bool(t)) # False
 
-# Example 4: Boolean from equality check
-a = 5
-b = 5
-print(a == b)   # True
-
-
-# Example 5: Boolean from inequality check
-c = 7
-d = 3
-print(c != d)   # True
+# Example 5
+# all false:
+# "" (empty string)
+# 0
+# 0.0
+# None
+# [], {}, () (empty collections)
