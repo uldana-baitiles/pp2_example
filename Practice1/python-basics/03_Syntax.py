@@ -13,5 +13,4 @@ print("Hello"); print("How are you?"); print("Bye bye!")
 # Example 5
 print("Hello World!")
 print("Have a good day.")
-print("Learning Python is fun!")
-
+print("Learning Python is fun!") 
