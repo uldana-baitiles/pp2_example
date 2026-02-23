@@ -24,20 +24,13 @@ print(*even(n),sep=",")
 """
 
 
-#task2
+#task3
 #Define a function with a generator which can iterate the numbers, 
 # which are divisible by 3 and 4, between a given range 0 and n.
-def div3and4(n):
-    for i in range(0, n + 1):
-        if i % 12 == 0:
+def dev(n):
+    for i in range(0,n+1):
+        if i%12==0:
             yield i
-
-
-n = int(input())
-
-ans = ""
-for x in div3and4(n):
-    ans += str(x) + ","
-
-print(ans[:-1])
-
+n=int(input())
+for i in dev(n):
+    print(i,end=" ")
