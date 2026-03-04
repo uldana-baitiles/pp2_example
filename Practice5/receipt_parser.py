@@ -2,7 +2,8 @@ import re, json
 
 
 def parse_check() -> list:
-    with open("raw.txt", "r", encoding = "UTF-8") as f:
+    with open("/Users/uldanabaitiles/Desktop/pp2/Practice5/raw.txt", "r", encoding="utf-8") as f:
+
         txt = f.read()
     result = {}
 
