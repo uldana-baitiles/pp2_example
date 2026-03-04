@@ -17,8 +17,8 @@
 | Completed | Practice 1 | [Open](Practice1)|
 | Completed | Practice 2 | [Open](Practice2)|
 | Completed | Practice 3 | [Open](Practice3)|
-| Not Started | Practice 4 | - |
-| Not Started | Practice 5 | - |
+| Not Started | Practice 4 | [Open](Practice4) |
+| Not Started | Practice 5 | [Open](Practice5) |
 | Not Started | Practice 6 | - |
 | Not Started | Practice 7 | - |
 | Not Started | Practice 8–9 | - |
