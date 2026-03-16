@@ -2,7 +2,7 @@ import shutil
 import os
 
 # Copy file
-shutil.copy("sample.txt", "backup_sample.txt")
+shutil.copy("Practice6/sample.txt", "backup_sample.txt")
 print("File copied.")
 
 # Delete file safely

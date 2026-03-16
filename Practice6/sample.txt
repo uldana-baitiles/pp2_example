@@ -2,3 +2,5 @@ Hello
 This is Practice 6
 Python file handling example
 New line added.
+New line added.
+New line added.
