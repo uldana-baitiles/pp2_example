@@ -1,31 +1,24 @@
-#1.enumerate() basic
-names=['zhan','aru','samal','kazyna','madina']
+names = ["Ali", "Dana", "Aruzhan"]
+scores = [90, 85, 88]
+nums = [4, 1, 9, 2]
+
+# enumerate → даёт индекс + значение
 for i, name in enumerate(names):
-    print(i,name)
+    print(i, name)
 
-#2.enumerate()-starting from 100
-for i,name in enumerate(names,start=100):
-    print(i,name)
+# zip → соединяет два списка
+for name, score in zip(names, scores):
+    print(name, score)
 
-#3.zip()-two lists
-numb=[1,2,3]
-let=['a','b','c']
-for n,l in zip(numb,let):
-    print(n,l)
+# built-in functions
+print(len(nums))
+print(sum(nums))
+print(min(nums))
+print(max(nums))
+print(sorted(nums))
 
-#4.zip()-to create dictionary
-d=dict(zip(numb,let))
-print(d)
-
-#5.tyoe checking and type conversion
-v='10'
-print(type(v))
-
-n=int(v)
-print(n+5)
-
-f=float("3.14")
-print(type(f))
-
-s=str(25)
-print(type(s))
+# type conversion
+print(int("5"))
+print(float("3.14"))
+print(str(100))
+print(list("abc"))
