@@ -34,8 +34,8 @@ coin = pygame.transform.scale(pygame.image.load("coiin.png"), (30,30))
 
 crash = pygame.mixer.Sound("crash.wav")
 
-playerrect = player.get_rect()
-playerrect.center = (160,520)
+playerrect = player.get_rect() #рамка обьекта
+playerrect.center = (160,520) #позиция
 
 enemyrect = enemy.get_rect()
 enemyrect.center = (random.randint(40, width - 40),0)
@@ -66,7 +66,7 @@ def move_coin():
     global coins
     coinrect.move_ip(0, speed-2)
 
-    if coinrect.top > height:
+    if coinrect.top > height: #если монета ушла вниз за экран
         coinrect.center = (random.randint(40, width -40), -50)
 
     if playerrect.colliderect(coinrect):

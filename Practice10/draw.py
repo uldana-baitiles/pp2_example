@@ -102,7 +102,7 @@ while running:
                 pygame.draw.circle(screen, WHITE, (x, y), radius)
 
             elif mode == "rect":
-                screen.blit(canvas_copy, (0,0))
+                screen.blit(canvas_copy, (0,0))#чтоб следов не оставалась 
                 x1, y1 = start_pos
                 x2, y2 = event.pos
 

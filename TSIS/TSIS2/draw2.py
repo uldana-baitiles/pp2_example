@@ -1,7 +1,30 @@
 import pygame
 import math
+import datetime
 
 pygame.init()
+
+def flood_fill(surface, x, y, new_color):
+    target_color = surface.get_at((x, y))
+    if target_color == new_color:
+        return
+
+    stack = [(x, y)]
+
+    while stack:
+        x, y = stack.pop()
+
+        if surface.get_at((x, y)) == target_color:
+            surface.set_at((x, y), new_color)
+
+            if x > 0:
+                stack.append((x-1, y))
+            if x < WIDTH-1:
+                stack.append((x+1, y))
+            if y > 0:
+                stack.append((x, y-1))
+            if y < HEIGHT-1:
+                stack.append((x, y+1))
 
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -25,6 +48,11 @@ fill = False
 
 start_pos = None
 last_pos = None
+
+font = pygame.font.SysFont(None, 30)
+text = ""
+text_pos = None
+typing = False
 
 running = True
 while running:
@@ -51,7 +79,7 @@ while running:
                 mode = "paint"
             elif event.key == pygame.K_q:
                 mode = "rect"
-            elif event.key == pygame.K_s:
+            elif event.key == pygame.K_o:
                 mode = "square"
             elif event.key == pygame.K_t:
                 mode = "right triangle"
@@ -59,6 +87,19 @@ while running:
                 mode = "equilateral triangle"
             elif event.key == pygame.K_h:
                 mode = "rhombus"
+            elif event.key == pygame.K_d:
+                mode = "line"
+
+            elif event.key == pygame.K_u:
+                mode = "fill"
+            elif event.key == pygame.K_y:
+                mode = "text"
+            elif event.key == pygame.K_1:
+                radius = 2   # small
+            elif event.key == pygame.K_2:
+                radius = 5   # medium
+            elif event.key == pygame.K_3:
+                radius = 10  # large
 
             elif event.key == pygame.K_f:
                 fill = not fill
@@ -70,7 +111,22 @@ while running:
 
             elif event.key == pygame.K_x:
                 screen.fill(WHITE)
-
+            
+            elif event.key == pygame.K_s and pygame.key.get_mods() & pygame.KMOD_CTRL:
+                filename = f"paint_{datetime.datetime.now().timestamp()}.png"
+                pygame.image.save(screen, filename)
+                print("Saved:", filename)
+            if typing:
+                if event.key == pygame.K_RETURN:
+                    img = font.render(text, True, color)
+                    screen.blit(img, text_pos)
+                    typing = False
+                elif event.key == pygame.K_BACKSPACE:
+                    text = text[:-1]
+                elif event.key == pygame.K_ESCAPE:
+                    typing = False
+                else:
+                    text += event.unicode
             radius = max(1, radius)
 
         elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -78,8 +134,12 @@ while running:
             start_pos = event.pos
             last_pos = event.pos
             canvas_copy = screen.copy()
-            #To prevent drawing trails when moving mouse.
-
+            if mode == "fill":
+                flood_fill(screen, event.pos[0], event.pos[1], color)
+            if mode == "text":
+                typing = True
+                text_pos = event.pos
+                text = ""
 
         elif event.type == pygame.MOUSEBUTTONUP:
             drawing = False
@@ -166,6 +226,10 @@ while running:
                 
                 width = 0 if fill else 2
                 pygame.draw.polygon(screen, color, points, width)
+            elif mode == "line":
+                x1, y1 = start_pos
+                x2, y2 = event.pos
+                pygame.draw.line(screen, color, start_pos, event.pos, radius)
 
         elif event.type == pygame.MOUSEMOTION and drawing:
             x, y = event.pos
@@ -266,6 +330,15 @@ while running:
                 
                 width = 0 if fill else 2
                 pygame.draw.polygon(screen, color, points, width)
+            elif mode == "line":
+                screen.blit(canvas_copy, (0,0))
+                x1, y1 = start_pos
+                x2, y2 = event.pos
+                pygame.draw.line(screen, color, start_pos, event.pos, radius)
+
+    if typing and text_pos:
+        img = font.render(text, True, color)
+        screen.blit(img, text_pos)
 
 
     pygame.display.flip()

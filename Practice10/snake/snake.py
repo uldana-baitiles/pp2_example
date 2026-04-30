@@ -30,7 +30,7 @@ GRAY = (100,100,100)
 
 font = pygame.font.SysFont("Arial", 34)
 
-
+#читает файл уровня и создаёт стены
 def generate_walls(level):
     walls = []
     f = open("levels/level{}.txt".format(level), "r")
