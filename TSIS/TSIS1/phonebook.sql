@@ -182,8 +182,8 @@ $$ LANGUAGE plpgsql;
 -- ============================================================
 -- TEST DATA
 -- ============================================================
-CALL upsert_contact('Madina', '87767321438', 'turgynbekovamadina@gmail.com', '2008-04-10');
-CALL upsert_contact('Merey',  '87765321438', 'turgynbekovamerey@gmail.com',  '2004-03-20', 'family');
+CALL upsert_contact('Uldana', '87767321438', 'baitilesuldana@gmail.com', '2008-04-10');
+CALL upsert_contact('Uldana',  '87765321438', 'baitilesuldana@gmail.com',  '2004-03-20', 'family');
 CALL upsert_contact('Mingyu', '87956143855', 'kim.mingyu@gmail.com',         '1997-04-06', 'other');
 CALL upsert_contact('Mdin',   '821438',      'gvfhsdhb@gmail.com',           '1852-02-25');
 
@@ -200,8 +200,8 @@ CALL insert_new_users(
 SELECT * FROM contacts;
 
 CALL deleting_contacts(p_name := 'Mdin');
-CALL add_phone('Merey', '87767361498', 'work');
-CALL move_to_group('Merey', 'other');
+CALL add_phone('Uldana', '87767361498', 'work');
+CALL move_to_group('Uldana', 'other');
 
 SELECT * FROM search_contacts('8776');
 SELECT * FROM contacts;
